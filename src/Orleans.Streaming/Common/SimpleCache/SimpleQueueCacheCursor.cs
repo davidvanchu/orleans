@@ -58,10 +58,6 @@ namespace Orleans.Providers.Streams.Common
             this.streamId = streamId;
             this.logger = logger;
             current = null;
-            if (logger.IsEnabled(LogLevel.Debug))
-            {
-                logger.LogDebug("SimpleQueueCacheCursor New Cursor for {StreamId}", streamId);
-            }
         }
 
         /// <inheritdoc />

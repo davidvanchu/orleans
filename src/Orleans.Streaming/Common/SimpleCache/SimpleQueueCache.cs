@@ -159,7 +159,7 @@ namespace Orleans.Providers.Streams.Common
         {
             if (logger.IsEnabled(LogLevel.Debug))
             {
-                logger.LogDebug("InitializeCursor: {Cursor} to sequenceToken {SequenceToken}", cursor, sequenceToken);
+                logger.LogDebug("InitializeCursor: {Cursor} to sequenceToken {SequenceToken}", cursor, sequenceToken.ToString().Replace(Environment.NewLine, ""));
             }
 
             // Nothing in cache, unset token, and wait for more data.
