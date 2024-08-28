@@ -20,6 +20,8 @@ namespace UnitTests.Grains
             public int ErrorCounter { get; set; }
             [Id(2)]
             public StreamSequenceToken Token { get; set; }
+            [Id(3)]
+            public List<int> Ints { get; set; } = new List<int>();
         }
 
         public ImplicitSubscriptionCounterGrain(ILoggerFactory loggerFactory)
@@ -43,6 +45,8 @@ namespace UnitTests.Grains
 
         public Task<int> GetEventCounter() => Task.FromResult(this.State.EventCounter);
 
+        public Task<List<int>> GetInts() => Task.FromResult(this.State.Ints);
+
         public Task Deactivate()
         {
             this.DeactivateOnIdle();
@@ -53,13 +57,14 @@ namespace UnitTests.Grains
         {
             this.logger.LogInformation($"OnSubscribed: {handleFactory.ProviderName}/{handleFactory.StreamId}");
 
-            await handleFactory.Create<byte[]>().ResumeAsync(OnNext, OnError, OnCompleted, this.State.Token);
+            await handleFactory.Create<byte[]>().ResumeAsync(OnNext, OnError, OnCompleted);//, this.State.Token);
 
             async Task OnNext(byte[] value, StreamSequenceToken token)
             {
                 this.logger.LogInformation("Received: [{Value} {Token}]", value, token);
                 this.State.EventCounter++;
                 this.State.Token = token;
+                this.State.Ints.Add(value.First());
                 await this.WriteStateAsync();
                 if (this.deactivateOnEvent)
                 {

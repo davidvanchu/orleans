@@ -6,6 +6,8 @@ namespace UnitTests.GrainInterfaces
 
         Task<int> GetErrorCounter();
 
+        Task<List<int>> GetInts();
+
         Task Deactivate();
 
         Task DeactivateOnEvent(bool deactivate);
