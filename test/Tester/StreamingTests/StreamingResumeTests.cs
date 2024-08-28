@@ -33,11 +33,23 @@ namespace Tester.StreamingTests
             var interestingData2 = new byte[1] { 2 };
             await stream.OnNextAsync(interestingData2);
 
+            var interestingData3 = new byte[1] { 3 };
+            await stream.OnNextAsync(interestingData3);
+
+            var interestingData4 = new byte[1] { 4 };
+            await stream.OnNextAsync(interestingData4);
+
+            var interestingData5 = new byte[1] { 5 };
+            await stream.OnNextAsync(interestingData5);
+
             await Task.Delay(2_000);
 
             var grainInts = await grain.GetInts();
             Assert.Contains(1, grainInts);
             Assert.Contains(2, grainInts);
+            Assert.Contains(3, grainInts);
+            Assert.Contains(4, grainInts);
+            Assert.Contains(5, grainInts);
             Assert.Equal(0, await grain.GetErrorCounter());
             Assert.Equal(2, await grain.GetEventCounter());
         }
@@ -65,11 +77,23 @@ namespace Tester.StreamingTests
             var interestingData2 = new byte[1] { 2 };
             await stream.OnNextAsync(interestingData2);
 
+            var interestingData3 = new byte[1] { 3 };
+            await stream.OnNextAsync(interestingData3);
+
+            var interestingData4 = new byte[1] { 4 };
+            await stream.OnNextAsync(interestingData4);
+
+            var interestingData5 = new byte[1] { 5 };
+            await stream.OnNextAsync(interestingData5);
+
             await Task.Delay(2_000);
 
             var grainInts = await grain.GetInts();
             Assert.Contains(1, grainInts);
             Assert.Contains(2, grainInts);
+            Assert.Contains(3, grainInts);
+            Assert.Contains(4, grainInts);
+            Assert.Contains(5, grainInts);
             Assert.Equal(0, await grain.GetErrorCounter());
             Assert.Equal(2, await grain.GetEventCounter());
         }
@@ -98,11 +122,23 @@ namespace Tester.StreamingTests
             var interestingData2 = new byte[1] { 2 };
             await stream.OnNextAsync(interestingData2);
 
+            var interestingData3 = new byte[1] { 3 };
+            await stream.OnNextAsync(interestingData3);
+
+            var interestingData4 = new byte[1] { 4 };
+            await stream.OnNextAsync(interestingData4);
+
+            var interestingData5 = new byte[1] { 5 };
+            await stream.OnNextAsync(interestingData5);
+
             await Task.Delay(2_000);
 
             var grainInts = await grain.GetInts();
             Assert.Contains(1, grainInts);
             Assert.Contains(2, grainInts);
+            Assert.Contains(3, grainInts);
+            Assert.Contains(4, grainInts);
+            Assert.Contains(5, grainInts);
             Assert.Equal(0, await grain.GetErrorCounter());
             Assert.Equal(2, await grain.GetEventCounter());
         }
@@ -140,12 +176,20 @@ namespace Tester.StreamingTests
             var interestingData3 = new byte[1] { 3 };
             await stream.OnNextAsync(interestingData3);
 
+            var interestingData4 = new byte[1] { 4 };
+            await stream.OnNextAsync(interestingData4);
+
+            var interestingData5 = new byte[1] { 5 };
+            await stream.OnNextAsync(interestingData5);
+
             await Task.Delay(2_000);
 
             var grainInts = await grain.GetInts();
             Assert.Contains(1, grainInts);
             Assert.Contains(2, grainInts);
             Assert.Contains(3, grainInts);
+            Assert.Contains(4, grainInts);
+            Assert.Contains(5, grainInts);
             Assert.Equal(0, await grain.GetErrorCounter());
             Assert.Equal(3, await grain.GetEventCounter());
         }
