@@ -26,7 +26,7 @@ namespace Tester.StreamingTests
                         b.ConfigurePullingAgent(ob => ob.Configure(options =>
                         {
                             options.StreamInactivityPeriod = StreamInactivityPeriod;
-                            //options.MaxEventDeliveryTime = TimeSpan.FromSeconds(2);
+                            options.MaxEventDeliveryTime = TimeSpan.FromSeconds(2);
                         }));
                         b.ConfigureCacheEviction(op => op.Configure(opt =>
                         {

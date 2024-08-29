@@ -57,7 +57,8 @@ namespace UnitTests.Grains
         {
             this.logger.LogInformation($"OnSubscribed: {handleFactory.ProviderName}/{handleFactory.StreamId}");
 
-            await handleFactory.Create<byte[]>().ResumeAsync(OnNext, OnError, OnCompleted);//, this.State.Token);
+            //await handleFactory.Create<byte[]>().ResumeAsync(OnNext, OnError, OnCompleted);//, this.State.Token);
+            await handleFactory.Create<byte[]>().ResumeAsync(OnNext, OnError, OnCompleted, this.State.Token);
 
             async Task OnNext(byte[] value, StreamSequenceToken token)
             {
